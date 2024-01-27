@@ -6,8 +6,7 @@
 render_priority = 0
 shader = ExtResource("1_gvplu")
 
-[node name="CSGBox3D2" type="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.421045, 0)
+[node name="16x16" type="CSGBox3D"]
 use_collision = true
 collision_mask = 7
 size = Vector3(16, 2, 16)

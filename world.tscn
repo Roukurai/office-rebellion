@@ -20,6 +20,7 @@ shader_parameter/Color_2 = Color(0, 0.898039, 0.439216, 1)
 
 [node name="character" parent="." instance=ExtResource("2_7bd7c")]
 transform = Transform3D(-1, 2.98023e-08, -8.74228e-08, 2.98023e-08, 1, 0, 8.74228e-08, 0, -1, 0, 2.9686, 0)
+SPEED = 20.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g3bud")
@@ -29,10 +30,9 @@ transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866026, 0.5, 0.5, -0.433
 shadow_enabled = true
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 64)
 
 [node name="MainFloor" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, -2, -64)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 use_collision = true
 collision_mask = 7
 size = Vector3(160, 2, 160)
@@ -40,18 +40,19 @@ material = SubResource("ShaderMaterial_rwhea")
 metadata/_edit_lock_ = true
 
 [node name="FloorLD3" parent="Node3D" instance=ExtResource("3_qhgsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 64)
 
 [node name="FloorLD4" parent="Node3D" instance=ExtResource("3_qhgsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
 
 [node name="FloorLD5" parent="Node3D" instance=ExtResource("3_qhgsu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, 64)
 
 [node name="FloorLD6" parent="Node3D" instance=ExtResource("3_qhgsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
 [node name="FloorMD7" parent="Node3D" instance=ExtResource("4_7xksm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, 40)
 
 [node name="FloorMD15" parent="Node3D" instance=ExtResource("4_7xksm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136, 0, -24)
@@ -69,10 +70,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 0, 8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, 8)
 
 [node name="FloorMD25" parent="Node3D" instance=ExtResource("4_7xksm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 72)
+
+[node name="FloorMD33" parent="Node3D" instance=ExtResource("4_7xksm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 72)
+
+[node name="FloorMD34" parent="Node3D" instance=ExtResource("4_7xksm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 72)
+
+[node name="FloorMD35" parent="Node3D" instance=ExtResource("4_7xksm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 72)
+
+[node name="FloorMD36" parent="Node3D" instance=ExtResource("4_7xksm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 72)
+
+[node name="FloorMD37" parent="Node3D" instance=ExtResource("4_7xksm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 72)
 
 [node name="FloorMD26" parent="Node3D" instance=ExtResource("4_7xksm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 0, 40)
 
 [node name="FloorMD27" parent="Node3D" instance=ExtResource("4_7xksm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 0, -136)
@@ -99,13 +115,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -40)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -56)
 
 [node name="FloorMD12" parent="Node3D" instance=ExtResource("4_7xksm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -72)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, -24)
 
 [node name="FloorMD13" parent="Node3D" instance=ExtResource("4_7xksm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -88)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, 72)
 
 [node name="FloorMD14" parent="Node3D" instance=ExtResource("4_7xksm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -104)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 72)
 
 [node name="FloorMD16" parent="Node3D" instance=ExtResource("4_7xksm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136, 0, -40)

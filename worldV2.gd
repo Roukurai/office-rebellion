@@ -1,72 +1,98 @@
-extends Node2D
+extends Node3D
 
 # Define floor dimensions
-const FLOOR_SIZE = 160
+@export var floor_size = 160
+
+# export for 
+@export var room_s_obj = preload("res://8x8.tscn")
+@export var room_m_obj = preload("res://16x16.tscn")
+@export var room_l_obj = preload("res://32x32.tscn")
+
+# Export variables for container floor nodes
+@export var container_floor_s_node: Node3D
+@export var container_floor_m_node: Node3D
+@export var container_floor_l_node: Node3D
 
 # Define room sizes
-const ROOM_32 = 32
-const ROOM_16 = 16
-const ROOM_8 = 8
+const ROOM_L = 32
+const ROOM_M = 16
+const ROOM_S = 8
 
 # Function to generate floor layout
 func generate_floor_layout():
-	# Clear existing layout
 	clear_layout()
+	
+	place_floor(room_l_obj,Vector3(64,0,64),container_floor_l_node)
+	place_floor(room_l_obj,Vector3(-64,0,64),container_floor_l_node)
+	place_floor(room_l_obj,Vector3(64,0,-64),container_floor_l_node)
+	place_floor(room_l_obj,Vector3(-64,0,-64),container_floor_l_node)
+	
+	setup_floor_m(room_m_obj,Vector3(40,0,72),container_floor_m_node,Vector3(16,0,0))
+	setup_floor_m(room_m_obj,Vector3(40,0,-72),container_floor_m_node,Vector3(16,0,0))
+	setup_floor_m(room_m_obj,Vector3(72,0,40),container_floor_m_node,Vector3(0,0,16))
+	setup_floor_m(room_m_obj,Vector3(-72,0,40),container_floor_m_node,Vector3(0,0,16))
+	
+	setup_floor_m(room_m_obj,Vector3(40,0,56),container_floor_m_node,Vector3(16,0,0))
+	setup_floor_m(room_m_obj,Vector3(40,0,-56),container_floor_m_node,Vector3(16,0,0))
+	setup_floor_m(room_m_obj,Vector3(56,0,40),container_floor_m_node,Vector3(0,0,16))
+	setup_floor_m(room_m_obj,Vector3(-56,0,40),container_floor_m_node,Vector3(0,0,16))
+	
+	setup_floor_s(room_s_obj,Vector3(44,0,44),container_floor_m_node,Vector3(0,0,8))
 
-	# Calculate positions for 32x32 rooms in the corners
-	place_32x32_room(Vector2(0, 0))
-	place_32x32_room(Vector2(FLOOR_SIZE - ROOM_32, 0))
-	place_32x32_room(Vector2(0, FLOOR_SIZE - ROOM_32))
-	place_32x32_room(Vector2(FLOOR_SIZE - ROOM_32, FLOOR_SIZE - ROOM_32))
 
-	# Calculate positions for 16x16 rooms
-	var x_offset = ROOM_32
-	var y_offset = ROOM_32
-	for i in range(4):
-		place_16x16_rooms(Vector2(x_offset, y_offset))
-		if i % 2 == 0:
-			x_offset = FLOOR_SIZE - ROOM_32 - ROOM_16 * 4
-		else:
-			x_offset = ROOM_32
-			y_offset += ROOM_16 * 4
 
-	# Fill remaining space with 8x8 rooms
-	place_8x8_rooms()
+func place_floor(floorType,floorPosition,floorParent):
+	var floorInstance = floorType.instantiate()
+	floorInstance.position = floorPosition
+	floorParent.add_child(floorInstance)
 
-# Function to place 32x32 room at specified position
-func place_32x32_room(position: Vector2):
-	# Placeholder implementation to visualize room placement
-	print("Placing 32x32 room at position:", position)
 
-# Function to place 16x16 rooms starting from specified position
-func place_16x16_rooms(position: Vector2):
-	# Placeholder implementation to visualize room placement
-	for x in range(4):
-		for y in range(4):
-			place_16x16_room(Vector2(position.x + x * ROOM_16, position.y + y * ROOM_16))
+func setup_floor_m(floorType,floorPosition,floorParent,modifier):
+	var position = floorPosition
+	for i in range(6):
+		print(position)
+		var floorInstance = floorType.instantiate()
+		floorInstance.position = position
+		floorParent.add_child(floorInstance)
+		position -= modifier
 
-# Function to place individual 16x16 room at specified position
-func place_16x16_room(position: Vector2):
-	# Placeholder implementation to visualize room placement
-	print("Placing 16x16 room at position:", position)
+func setup_floor_s(floorType,floorPosition,floorParent,modifier):
+	var position = floorPosition
+	for i in range(12):
+		print(position)
+		var floorInstance = floorType.instantiate()
+		floorInstance.position = position
+		floorParent.add_child(floorInstance)
+		position -= modifier
+	
 
-# Function to fill remaining space with 8x8 rooms
-func place_8x8_rooms():
-	# Placeholder implementation to visualize room placement
-	remaining_space = FLOOR_SIZE - ROOM_32 * 2
-	for x in range(remaining_space // ROOM_8):
-		for y in range(remaining_space // ROOM_8):
-			place_8x8_room(Vector2(ROOM_32 + x * ROOM_8, ROOM_32 + y * ROOM_8))
-
-# Function to place individual 8x8 room at specified position
-func place_8x8_room(position: Vector2):
-	# Placeholder implementation to visualize room placement
-	print("Placing 8x8 room at position:", position)
-
-# Function to clear existing floor layout
 func clear_layout():
-	# Placeholder implementation to clear existing layout
-	print("Clearing existing layout")
+	# Get the number of children of the current node
+	var container_floor_s_count = container_floor_s_node.get_child_count()
+	var container_floor_m_count = container_floor_m_node.get_child_count()
+	var container_floor_l_count = container_floor_l_node.get_child_count()
+	# Loop through each child node
+	
+	if container_floor_s_count>0:
+		for i in range(container_floor_s_count):
+			# Get the child node at index i
+			var child_node = container_floor_s_node.get_child(i)
+			child_node.queue_free()
+	
+	if container_floor_m_count>0:
+		for i in range(container_floor_m_count):
+			# Get the child node at index i
+			var child_node = container_floor_m_node.get_child(i)
+			child_node.queue_free()
+	
+	if container_floor_l_count>0:
+		for i in range(container_floor_l_count):
+			# Get the child node at index i
+			var child_node = container_floor_l_node.get_child(i)
+			child_node.queue_free()
 
-# Call the function to generate floor layout
-generate_floor_layout()
+
+func _ready():
+	print(container_floor_l_node)
+	generate_floor_layout()
+	

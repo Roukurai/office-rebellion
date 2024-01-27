@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6a781vps5oxi"]
+
+[ext_resource type="Shader" uid="uid://dtq8vkrpvuqfj" path="res://gridmaterial.tres" id="1_3ynse"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_828ge"]
+render_priority = 0
+shader = ExtResource("1_3ynse")
+shader_parameter/grid_size = 1
+shader_parameter/Color_1 = Color(0, 0.803922, 0.388235, 1)
+shader_parameter/Color_2 = Color(0, 0.898039, 0.439216, 1)
+
+[node name="MainFloor" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+use_collision = true
+collision_mask = 7
+size = Vector3(160, 2, 160)
+material = SubResource("ShaderMaterial_828ge")
+metadata/_edit_lock_ = true

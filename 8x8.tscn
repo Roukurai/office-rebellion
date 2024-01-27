@@ -6,7 +6,7 @@
 render_priority = 0
 shader = ExtResource("1_if5sw")
 
-[node name="CSGBox3D2" type="CSGBox3D"]
+[node name="8x8" type="CSGBox3D"]
 use_collision = true
 collision_mask = 7
 size = Vector3(8, 2, 8)
