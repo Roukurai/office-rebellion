@@ -7,7 +7,6 @@ render_priority = 0
 shader = ExtResource("1_6xwnb")
 
 [node name="CSGBox3D2" type="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.421045, 0)
 use_collision = true
 collision_mask = 7
 size = Vector3(32, 2, 32)
