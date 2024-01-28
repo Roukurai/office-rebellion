@@ -8,6 +8,8 @@ extends Node3D
 @export var room_m_obj = preload("res://16x16.tscn")
 @export var room_l_obj = preload("res://32x32.tscn")
 
+
+
 # Export variables for container floor nodes
 @export var container_floor_s_node: Node3D
 @export var container_floor_m_node: Node3D
@@ -217,10 +219,15 @@ func calculate_32x32_corner_coords():
 
 
 func _unhandled_key_input(event):
-	if Input.is_action_just_pressed("kt_reload"):
+	if Input.is_action_just_released("kt_reload"):
 		get_tree().reload_current_scene()
+
 
 func _ready():
 	print(container_floor_l_node)
 	generate_floor_layout()
 	
+
+func _process(delta):
+	if Input.is_action_just_released("kt_reload"):
+		get_tree().reload_current_scene()

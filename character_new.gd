@@ -9,6 +9,8 @@ const MAX_SPEED=50
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var camera = $Camera3D
+@onready var animated_sprite = $AnimatedSprite3D
+
 
 
 
@@ -28,9 +30,8 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and Input.mouse_mode==Input.MOUSE_MODE_CAPTURED:
+	if Input.is_action_pressed("kt_jump") and is_on_floor() and Input.mouse_mode==Input.MOUSE_MODE_CAPTURED:
 		velocity.y += JUMP_VELOCITY
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Vector3.ZERO
@@ -51,3 +52,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	force_update_transform()
+
+func _process(delta):
+	animated_sprite.play("idle")

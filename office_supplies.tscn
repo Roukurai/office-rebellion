@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dy3is6wsn11qt"]
+
+[ext_resource type="PackedScene" uid="uid://cqoxla7qj050d" path="res://assets/Calculadora.glb" id="1_gc4h0"]
+[ext_resource type="PackedScene" uid="uid://wmhn0kuvwlc7" path="res://assets/Dispensador.glb" id="2_7fynr"]
+[ext_resource type="PackedScene" uid="uid://bi71vgwn85unj" path="res://assets/Lapices.glb" id="3_d5ryx"]
+[ext_resource type="PackedScene" uid="uid://blwq3u8qohi5m" path="res://assets/Silla.glb" id="4_koirw"]
+[ext_resource type="PackedScene" uid="uid://tkdykpm4fubr" path="res://assets/Teclado.glb" id="5_villm"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Calculadora" parent="." instance=ExtResource("1_gc4h0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Dispensador" parent="." instance=ExtResource("2_7fynr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Lapices" parent="." instance=ExtResource("3_d5ryx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Silla" parent="." instance=ExtResource("4_koirw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Teclado2" parent="." instance=ExtResource("5_villm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
