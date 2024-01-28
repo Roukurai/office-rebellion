@@ -199,21 +199,21 @@ func find_empty_area_center(positions: Array) -> Vector3:
 		return Vector3(-1,0,-1)
 
 
-#func calculate_32x32_corner_coords():
-	#var corner_coords = []
-	## Define the starting position of the corner
-	#var start_x = 0
-	#var start_z = 0
-	## Loop through each row and column in the 4x4 grid
-	#for x in range(4):
-	#for z in range(4):
-	## Calculate the coordinates of the cubicle in the grid
-	#var cubicle_x = start_x + x
-	#var cubicle_z = start_z + z
-	## Add the coordinates to the list
-	#corner_coords.append(Vector3(cubicle_x, 0, cubicle_z))
-	## Return the list of coordinates for the corner
-	#return corner_coords
+func calculate_32x32_corner_coords():
+	var corner_coords = []
+	# Define the starting position of the corner
+	var start_x = 0
+	var start_z = 0
+	# Loop through each row and column in the 4x4 grid
+	for x in range(4):
+		for z in range(4):
+	# Calculate the coordinates of the cubicle in the grid
+			var cubicle_x = start_x + x
+			var cubicle_z = start_z + z
+			# Add the coordinates to the list
+			corner_coords.append(Vector3(cubicle_x, 0, cubicle_z))
+			# Return the list of coordinates for the corner
+	return corner_coords
 
 
 func _unhandled_key_input(event):
