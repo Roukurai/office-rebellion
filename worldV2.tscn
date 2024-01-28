@@ -31,7 +31,10 @@ shadow_enabled = true
 [node name="container_floor_s" type="Node3D" parent="."]
 
 [node name="CSGBox3D2" parent="container_floor_s" instance=ExtResource("3_xsk18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, 44)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 0, 76)
+
+[node name="CSGBox3D4" parent="container_floor_s" instance=ExtResource("3_xsk18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, 36)
 
 [node name="CSGBox3D3" parent="container_floor_s" instance=ExtResource("3_xsk18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 44)
