@@ -1,8 +1,9 @@
-[gd_scene load_steps=50 format=3 uid="uid://doh0w0if3r85g"]
+[gd_scene load_steps=51 format=3 uid="uid://doh0w0if3r85g"]
 
 [ext_resource type="Script" path="res://character_new.gd" id="1_7egtf"]
 [ext_resource type="Texture2D" uid="uid://cj2v3m2twul60" path="res://assets/Idle_Player.png" id="2_1mdkh"]
 [ext_resource type="Texture2D" uid="uid://b57udsafgox1o" path="res://assets/Throw_Player.png" id="2_4xnev"]
+[ext_resource type="PackedScene" uid="uid://cdai5u64p05co" path="res://attack.tscn" id="2_f3bmr"]
 [ext_resource type="Texture2D" uid="uid://gkp2cou3w148" path="res://assets/Damage_Player.png" id="3_nu4rp"]
 [ext_resource type="Texture2D" uid="uid://utl3njfl0wux" path="res://assets/Run_Player.png" id="3_tl17c"]
 [ext_resource type="Texture2D" uid="uid://jisnflaq1t0f" path="res://assets/Run_Frontal_Player.png" id="4_2v71r"]
@@ -178,7 +179,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -318,17 +319,17 @@ animations = [{
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3y4jd"]
 
-[node name="character" type="CharacterBody3D"]
+[node name="character" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_7egtf")
+attack_object = ExtResource("2_f3bmr")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 2.39979, 0)
 sprite_frames = SubResource("SpriteFrames_qpnjw")
-animation = &"hurt"
-frame = 1
-frame_progress = 0.0790833
+animation = &"attack"
+frame_progress = 0.00325223
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

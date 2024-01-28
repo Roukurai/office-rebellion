@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvgd8gk11s3v1"]
+
+[ext_resource type="Shader" uid="uid://bdcl413737k6l" path="res://gridmaterial32x32.tres" id="1_k2msa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5lq4b"]
+render_priority = 0
+shader = ExtResource("1_k2msa")
+
+[node name="CSGBox3D" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+use_collision = true
+collision_mask = 7
+size = Vector3(2, 10, 160)
+material = SubResource("ShaderMaterial_5lq4b")

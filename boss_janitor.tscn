@@ -1,0 +1,164 @@
+[gd_scene load_steps=24 format=3 uid="uid://bxminwu6hwi3g"]
+
+[ext_resource type="Texture2D" uid="uid://b4pqtt1qrqfer" path="res://assets/Attack_Boss_Janitor.png" id="1_0qjfr"]
+[ext_resource type="Script" path="res://script_boss_janitor.gd" id="1_b4plm"]
+[ext_resource type="Texture2D" uid="uid://coj04cftc2d5u" path="res://assets/Walk_Boss_Janitor.png" id="2_cbs1t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk50e"]
+atlas = ExtResource("1_0qjfr")
+region = Rect2(0, 0, 500, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejnvl"]
+atlas = ExtResource("1_0qjfr")
+region = Rect2(500, 0, 500, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06m3w"]
+atlas = ExtResource("1_0qjfr")
+region = Rect2(1000, 0, 500, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynjpj"]
+atlas = ExtResource("1_0qjfr")
+region = Rect2(1500, 0, 500, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gxxi"]
+atlas = ExtResource("1_0qjfr")
+region = Rect2(2000, 0, 500, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg7jh"]
+atlas = ExtResource("1_0qjfr")
+region = Rect2(2500, 0, 500, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv4oo"]
+atlas = ExtResource("1_0qjfr")
+region = Rect2(3000, 0, 500, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qakn2"]
+atlas = ExtResource("2_cbs1t")
+region = Rect2(0, 0, 500, 397)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heipx"]
+atlas = ExtResource("2_cbs1t")
+region = Rect2(500, 0, 500, 397)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhs1e"]
+atlas = ExtResource("2_cbs1t")
+region = Rect2(1000, 0, 500, 397)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxvxh"]
+atlas = ExtResource("2_cbs1t")
+region = Rect2(1500, 0, 500, 397)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doua2"]
+atlas = ExtResource("2_cbs1t")
+region = Rect2(2000, 0, 500, 397)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6ybo"]
+atlas = ExtResource("2_cbs1t")
+region = Rect2(2500, 0, 500, 397)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uki5"]
+atlas = ExtResource("2_cbs1t")
+region = Rect2(3000, 0, 500, 397)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qyi1"]
+atlas = ExtResource("2_cbs1t")
+region = Rect2(3500, 0, 500, 397)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c73af"]
+atlas = ExtResource("2_cbs1t")
+region = Rect2(4000, 0, 500, 397)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1lfn"]
+atlas = ExtResource("2_cbs1t")
+region = Rect2(4500, 0, 500, 397)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qsfu6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk50e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejnvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06m3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynjpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gxxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fg7jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv4oo")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qakn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_heipx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhs1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxvxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doua2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6ybo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uki5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qyi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c73af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1lfn")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j2i6g"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_40dlv"]
+
+[node name="boss_Janitor" type="CharacterBody3D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_b4plm")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_qsfu6")
+animation = &"attack"
+frame_progress = 0.272929
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_j2i6g")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+collision_layer = 3
+collision_mask = 3
+mesh = SubResource("CapsuleMesh_40dlv")

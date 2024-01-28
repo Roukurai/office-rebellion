@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqvtiqumpahi7"]
+
+[ext_resource type="Texture2D" uid="uid://bw31ni13up4nb" path="res://assets/Projectile_Boss_Janitor.png" id="1_hfq7j"]
+
+[node name="Projectile" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 2
+texture = ExtResource("1_hfq7j")

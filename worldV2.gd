@@ -7,7 +7,7 @@ extends Node3D
 @export var room_s_obj = preload("res://8x8.tscn")
 @export var room_m_obj = preload("res://16x16.tscn")
 @export var room_l_obj = preload("res://32x32.tscn")
-
+@export var audioPlayer: AudioStreamPlayer
 
 
 # Export variables for container floor nodes
@@ -21,6 +21,8 @@ const ROOM_M = 16
 const ROOM_S = 8
 
 var id_to_child={}
+var corner_coords = []
+var coner_coord_positions = []
 
 # Function to generate floor layout
 func generate_floor_layout():
@@ -40,12 +42,34 @@ func generate_floor_layout():
 	#setup_floor_m(room_m_obj,Vector3(40,0,-56),container_floor_m_node,Vector3(16,0,0))
 	#setup_floor_m(room_m_obj,Vector3(56,0,40),container_floor_m_node,Vector3(0,0,16))
 	#setup_floor_m(room_m_obj,Vector3(-56,0,40),container_floor_m_node,Vector3(0,0,16))
-	
 	#setup_floor_s(room_s_obj,Vector3(44,0,44),container_floor_m_node,Vector3(0,0,8))
+
+	#Top-Left Corner: (0, 0, 0) to (3, 0, 3)
+	#Top-Right Corner: (0, 0, 16) to (3, 0, 19)
+	#Bottom-Left Corner: (16, 0, 0) to (19, 0, 3)
+	#Bottom-Right Corner: (16, 0, 16) to (19, 0, 19)
+
 	setup_floor_s(room_s_obj,Vector3(76,0,76),container_floor_m_node,Vector3(0,0,8))
+	
+	calculate_32x32_corner_coords(Vector3(0, 0, 0))
+	calculate_32x32_corner_coords(Vector3(0, 0, 16))
+	calculate_32x32_corner_coords(Vector3(16, 0, 0))
+	calculate_32x32_corner_coords(Vector3(16, 0, 16))
+	
 	for i in range(32):
 		var randomCubicle = select_random_cubicle_id()
 
+	
+	for id in corner_coords:
+		print("corner_coords id is: ", id)
+		queue_free_object_by_id(id)
+		
+
+	place_floor(room_l_obj,Vector3(64,1,64),container_floor_l_node)
+	place_floor(room_l_obj,Vector3(-64,1,64),container_floor_l_node)
+	place_floor(room_l_obj,Vector3(64,1,-64),container_floor_l_node)
+	place_floor(room_l_obj,Vector3(-64,1,-64),container_floor_l_node)
+	
 	
 	print("Done")
 
@@ -201,20 +225,28 @@ func find_empty_area_center(positions: Array) -> Vector3:
 		return Vector3(-1,0,-1)
 
 
-func calculate_32x32_corner_coords():
-	var corner_coords = []
+func calculate_32x32_corner_coords(corner_coord: Vector3):
+	
+	
+	var selected_object = id_to_child[corner_coord]
+	coner_coord_positions.append(selected_object.position)
+	
 	# Define the starting position of the corner
 	var start_x = 0
 	var start_z = 0
 	# Loop through each row and column in the 4x4 grid
 	for x in range(4):
 		for z in range(4):
-	# Calculate the coordinates of the cubicle in the grid
+			# Calculate the coordinates of the cubicle in the grid
 			var cubicle_x = start_x + x
 			var cubicle_z = start_z + z
+			var coord_id = Vector3(cubicle_x, 0, cubicle_z)
 			# Add the coordinates to the list
+			selected_object = id_to_child[coord_id]
 			corner_coords.append(Vector3(cubicle_x, 0, cubicle_z))
-			# Return the list of coordinates for the corner
+			coner_coord_positions.append(selected_object.position)
+		
+
 	return corner_coords
 
 
@@ -224,6 +256,7 @@ func _unhandled_key_input(event):
 
 
 func _ready():
+	audioPlayer.play(0.0)
 	print(container_floor_l_node)
 	generate_floor_layout()
 	

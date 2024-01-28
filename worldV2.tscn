@@ -2,20 +2,25 @@
 
 [ext_resource type="Script" path="res://worldV2.gd" id="1_b4dgg"]
 [ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://character.tscn" id="1_xskcn"]
-[ext_resource type="PackedScene" uid="uid://b34sufcimwutn" path="res://8x8.tscn" id="3_xsk18"]
-[ext_resource type="PackedScene" uid="uid://pna6kx5ta7df" path="res://16x16.tscn" id="4_451yf"]
+[ext_resource type="PackedScene" uid="uid://cvgd8gk11s3v1" path="res://wall.tscn" id="4_2agjj"]
+[ext_resource type="PackedScene" uid="uid://cjrag0rdcdmq1" path="res://ui.tscn" id="5_0qj72"]
 [ext_resource type="PackedScene" uid="uid://b6a781vps5oxi" path="res://main_floor.tscn" id="5_v8btk"]
-[ext_resource type="PackedScene" uid="uid://dm32blgm66eiv" path="res://32x32.tscn" id="5_xfkgf"]
+[ext_resource type="AudioStream" uid="uid://d1e7a5m87o0p7" path="res://assets/audio/Boss figth 2 WAV (1).wav" id="6_0qf1y"]
 
 [sub_resource type="Environment" id="Environment_g3bud"]
 background_mode = 1
 background_color = Color(0.411765, 0.756863, 0.909804, 1)
 
-[node name="World" type="Node3D" node_paths=PackedStringArray("container_floor_s_node", "container_floor_m_node", "container_floor_l_node")]
+[node name="World" type="Node3D" node_paths=PackedStringArray("audioPlayer", "container_floor_s_node", "container_floor_m_node", "container_floor_l_node")]
 script = ExtResource("1_b4dgg")
+audioPlayer = NodePath("AudioStreamPlayer")
 container_floor_s_node = NodePath("container_floor_s")
 container_floor_m_node = NodePath("container_floor_m")
 container_floor_l_node = NodePath("container_floor_l")
+
+[node name="ui_layer" type="CanvasLayer" parent="."]
+
+[node name="ui_control" parent="ui_layer" instance=ExtResource("5_0qj72")]
 
 [node name="character" parent="." instance=ExtResource("1_xskcn")]
 transform = Transform3D(-1, 2.98023e-08, -8.74228e-08, 2.98023e-08, 1, 0, 8.74228e-08, 0, -1, 0, 2.9686, 0)
@@ -30,32 +35,29 @@ shadow_enabled = true
 
 [node name="container_floor_s" type="Node3D" parent="."]
 
-[node name="CSGBox3D2" parent="container_floor_s" instance=ExtResource("3_xsk18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 0, 76)
-
-[node name="CSGBox3D4" parent="container_floor_s" instance=ExtResource("3_xsk18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, 36)
-
-[node name="CSGBox3D3" parent="container_floor_s" instance=ExtResource("3_xsk18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 44)
-
 [node name="container_floor_m" type="Node3D" parent="."]
-
-[node name="CSGBox3D4" parent="container_floor_m" instance=ExtResource("4_451yf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 72)
-
-[node name="CSGBox3D7" parent="container_floor_m" instance=ExtResource("4_451yf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 56)
-
-[node name="CSGBox3D5" parent="container_floor_m" instance=ExtResource("4_451yf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, 40)
-
-[node name="CSGBox3D6" parent="container_floor_m" instance=ExtResource("4_451yf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, 40)
 
 [node name="container_floor_l" type="Node3D" parent="."]
 
-[node name="32x32S" parent="container_floor_l" instance=ExtResource("5_xfkgf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 64)
+[node name="container_world" type="Node3D" parent="."]
 
-[node name="MainFloor" parent="." instance=ExtResource("5_v8btk")]
+[node name="MainFloor" parent="container_world" instance=ExtResource("5_v8btk")]
+
+[node name="CSGBox3D" parent="container_world" instance=ExtResource("4_2agjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 4, 0)
+
+[node name="CSGBox3D2" parent="container_world" instance=ExtResource("4_2agjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 4, 0)
+
+[node name="CSGBox3D3" parent="container_world" instance=ExtResource("4_2agjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 81)
+size = Vector3(160, 10, 2)
+
+[node name="CSGBox3D4" parent="container_world" instance=ExtResource("4_2agjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -81)
+size = Vector3(160, 10, 2)
+
+[node name="container_attack" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0qf1y")

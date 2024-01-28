@@ -1,13 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm32blgm66eiv"]
+[gd_scene load_steps=6 format=3 uid="uid://dm32blgm66eiv"]
 
 [ext_resource type="Shader" uid="uid://bdcl413737k6l" path="res://gridmaterial32x32.tres" id="1_6xwnb"]
+[ext_resource type="Script" path="res://script32.gd" id="2_w8ags"]
+[ext_resource type="PackedScene" uid="uid://bxminwu6hwi3g" path="res://boss_janitor.tscn" id="3_ptet3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s2nd2"]
 render_priority = 0
 shader = ExtResource("1_6xwnb")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_w001m"]
+size = Vector3(75, 10, 75)
+
 [node name="32x32S" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 use_collision = true
+collision_layer = 3
 collision_mask = 7
 size = Vector3(32, 2, 32)
 material = SubResource("ShaderMaterial_s2nd2")
+script = ExtResource("2_w8ags")
+objectToSpawn = ExtResource("3_ptet3")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("BoxShape3D_w001m")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
