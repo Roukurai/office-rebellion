@@ -2,13 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://dkcjv6dgm4spq"
-path="res://.godot/imported/CEO.png-09f712a951de115730bedaa977100b1a.ctex"
-=======
-uid="uid://dr0htmjfelgjj"
+uid="uid://dpr6xl4otjb2a"
 path.s3tc="res://.godot/imported/CEO.png-09f712a951de115730bedaa977100b1a.s3tc.ctex"
->>>>>>> origin/polish
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
