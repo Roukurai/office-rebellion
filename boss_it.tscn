@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfjmkrdjbwgtp"]
+
+[ext_resource type="Texture2D" uid="uid://cnxvv8oxsvhf3" path="res://assets/Boss_2.png" id="1_4ae73"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bsaj"]
+atlas = ExtResource("1_4ae73")
+region = Rect2(0, 0, 500, 501)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpqhy"]
+atlas = ExtResource("1_4ae73")
+region = Rect2(500, 0, 500, 501)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jv6u"]
+atlas = ExtResource("1_4ae73")
+region = Rect2(1000, 0, 500, 501)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcusr"]
+atlas = ExtResource("1_4ae73")
+region = Rect2(1500, 0, 500, 501)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymqq0"]
+atlas = ExtResource("1_4ae73")
+region = Rect2(2000, 0, 500, 501)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3jgdl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bsaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpqhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jv6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcusr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymqq0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2otf"]
+size = Vector3(3, 3, 3)
+
+[node name="boss_it" type="CharacterBody3D"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_3jgdl")
+animation = &"idle"
+frame_progress = 0.425828
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+shape = SubResource("BoxShape3D_h2otf")
