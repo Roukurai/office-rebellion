@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://ddfdmaju4csyl"
-=======
-uid="uid://cnxvv8oxsvhf3"
->>>>>>> 1ed0d6d57e3414593ac1b29d55fc86b52d9f6c5e
-path="res://.godot/imported/Boss_2.png-f60e6fbeb0ce54529d52bb5e03497c7e.ctex"
+uid="uid://bgxi0lh0ik6s7"
+path="res://.godot/imported/reglas.png-25374b5867354c37bf4edc816039de18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Boss_2.png"
-dest_files=["res://.godot/imported/Boss_2.png-f60e6fbeb0ce54529d52bb5e03497c7e.ctex"]
+source_file="res://assets/marketing/reglas.png"
+dest_files=["res://.godot/imported/reglas.png-25374b5867354c37bf4edc816039de18.ctex"]
 
 [params]
 
