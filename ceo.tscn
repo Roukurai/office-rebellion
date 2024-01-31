@@ -96,6 +96,7 @@ animations = [{
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_me8sx"]
 height = 2.5
+radius = 1.0
 
 [node name="ceo" type="CharacterBody3D"]
 

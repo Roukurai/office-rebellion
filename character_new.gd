@@ -107,5 +107,10 @@ func receive_damage(damage):
 
 func attack():
 	var newObject = attack_object.instantiate()
+	var testingpos =self.global_position
+	var testingscale = self.global_scale
 	newObject.global_position = self.global_position
 	container_attack.add_child(newObject)
+	#var testcollision = newObject.get_node("area3d").collis§ion_layer
+
+	var testobj = newObject
